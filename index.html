@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+    function Summ() {
+      // значения полей
+      var first = document.getElementById('first').value;
+      var second = document.getElementById('second').value;
+
+      // их сумма и вывод
+      var summ = (first * Math.pow(10, 15) + second * Math.pow(10, 15)) / Math.pow(10, 15);
+      alert(summ);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <form class="col-3">
+
+      <div class="form-group">
+        <input type="number" class="form-control" value=0.1 id="first" placeholder="Введите первое число">
+      </div>
+
+      <div class="form-group">
+        <input type="number" class="form-control" value=0.2 id="second" placeholder="Введите второе число">
+      </div>
+
+      <button type="button" class="btn btn-primary" onclick="Summ()">Сумма</button>
+    </form>
+    <hr>
+    <p>При простом складывании 0.1 и 0.2 получается 0.30...04 потому, что javascript каждого числа выделяет 8 байт памяти.
+    <br> В двоичной системе счёта 1 на 10 и 2 на 10 не делятся (1/10 2/10),
+    <br> поэтому появляется погрешность, которую можно увидеть если увеличить количество знаков после запятой
+    <br>(0.1).toFixed(30) => 0.10...05551115123126б</p>
+    <p>Однако, у целых чисел никакой погрешности нет, <br> поэтому мы можем просто сделать наши числа целыми, умножив их на 10<sup>15</sup> (Math.pow(10, 15)) <br> и их сумму обратно поделить на 10<sup>15</sup> (15 степень, потому что мы не знаем точно сколько знаков после запятой напридётся обрабатывать) и мы получаем ответ с не видимой погрешностью.</p>
+  </div>
+</body>
+</html>
